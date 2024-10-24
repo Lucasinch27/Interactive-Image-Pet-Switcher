@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Pet Switcher</title>
+    <link rel="icon" type="favicon" href="DALL·E 2024-10-24 15.20.57 - A simple, modern favicon for an 'Interactive Image Pet Switcher,' featuring a playful design of a paw print surrounded by small arrows, symbolizing in.webp">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8b400, #f12711, #e100ff);
+            background-size: 300% 300%;
+            animation: backgroundAnimation 15s ease infinite;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            position: relative;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            animation: slideIn 6s linear infinite;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+
+        img {
+            max-width: 450px;
+            height: auto;
+            border: 4px solid #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            color: #fff;
+            background-color: #ff5722;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
+        }
+
+        button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(1);
+        }
+
+        .signature {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.9rem;
+            color: #fff;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Image Pet Switcher</h1>
+    <img id="displayImage" src="cat and dog.png" alt="A dog and a cat sitting together">
+    <button onclick="changeImage()">Click to Change Image</button>
+    <div class="signature">By Lucas Inch</div>
+
+    <script>
+        let currentImage = 1;
+        const totalImages = 3;
+        const imageList = ["cat and dog.png", "cat.png", "Dog.png"];
+
+        // Preload images
+        imageList.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        function changeImage() {
+            const image = document.getElementById("displayImage");
+            image.style.opacity = 0; // Fade out
+
+            setTimeout(() => {
+                currentImage++;
+                if (currentImage > totalImages) {
+                    currentImage = 1;
+                }
+
+                switch (currentImage) {
+                    case 1:
+                        image.src = "cat and dog.png";
+                        image.alt = "A dog and a cat sitting together";
+                        break;
+                    case 2:
+                        image.src = "cat.png";
+                        image.alt = "A cat sitting on a couch";
+                        break;
+                    case 3:
+                        image.src = "Dog.png";
+                        image.alt = "A golden retriever standing outside";
+                        break;
+                }
+
+                image.style.opacity = 1; // Fade in
+            }, 300); // Adjust this timing to match the CSS transition
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Vibes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+                
+        <!-- Audio player -->
+        <audio controls>
+            <source src="City Lights.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <footer>By Lucas Inch</footer>
+    </div>
+</body>
+</html>
